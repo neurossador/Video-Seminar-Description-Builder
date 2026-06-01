@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конструктор описания видеосеминара</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header__inner">
+        <div class="header__brand">
+          <span class="header__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="24" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M11 12l3 2.5L17 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 22h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div>
+            <h1 class="header__title">Конструктор описания видеосеминара</h1>
+            <p class="header__subtitle">Быстрая подготовка текста для мастер-класса и онлайн-семинара</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="panel panel--form" aria-labelledby="form-heading">
+        <h2 id="form-heading" class="panel__heading">Исходные данные</h2>
+        <p class="panel__hint">Заполните поля — описание соберётся в едином профессиональном стиле.</p>
+
+        <form id="seminar-form" class="form" novalidate>
+          <div class="form__group">
+            <label for="topic">Тема семинара <span class="required">*</span></label>
+            <input type="text" id="topic" name="topic" required placeholder="Например: Работа с тревогой у подростков в клинической практике">
+          </div>
+
+          <div class="form__group">
+            <label for="audience">Целевая аудитория <span class="required">*</span></label>
+            <input type="text" id="audience" name="audience" required placeholder="Психологи, психотерапевты, врачи-психиатры">
+          </div>
+
+          <div class="form__group">
+            <label for="problem">Основная проблема / запрос аудитории <span class="required">*</span></label>
+            <textarea id="problem" name="problem" rows="2" required placeholder="С чем сталкиваются участники в работе и что хотят решить"></textarea>
+          </div>
+
+          <div class="form__group">
+            <label for="context">Профессиональный контекст</label>
+            <textarea id="context" name="context" rows="2" placeholder="Актуальность темы, нормативная база, клинические или образовательные рамки"></textarea>
+          </div>
+
+          <div class="form__row">
+            <div class="form__group">
+              <label for="duration">Длительность</label>
+              <input type="text" id="duration" name="duration" placeholder="2 часа 30 минут">
+            </div>
+            <div class="form__group">
+              <label for="access">Формат доступа</label>
+              <input type="text" id="access" name="access" placeholder="Запись + доступ 90 дней">
+            </div>
+          </div>
+
+          <div class="form__group">
+            <label for="bonuses">Бонусы</label>
+            <textarea id="bonuses" name="bonuses" rows="2" placeholder="Чек-листы, шаблоны, презентация, сертификат"></textarea>
+          </div>
+
+          <div class="form__group">
+            <label for="tone">Желаемая тональность</label>
+            <select id="tone" name="tone">
+              <option value="professional">Профессиональная, деловая</option>
+              <option value="warm">Тёплая, поддерживающая</option>
+              <option value="academic">Академическая, научно-образовательная</option>
+              <option value="practical">Практико-ориентированная</option>
+              <option value="inspiring">Вдохновляющая, мотивирующая</option>
+            </select>
+          </div>
+
+          <div class="form__actions">
+            <button type="submit" class="btn btn--primary">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Собрать описание
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel panel--result" aria-labelledby="result-heading">
+        <div class="panel__result-header">
+          <h2 id="result-heading" class="panel__heading">Готовое описание</h2>
+          <div class="toolbar" role="toolbar" aria-label="Действия с результатом">
+            <button type="button" id="btn-copy" class="btn btn--secondary" disabled title="Скопировать в буфер обмена">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M3 11V3a1.5 1.5 0 011.5-1.5H11" stroke="currentColor" stroke-width="1.2"/></svg>
+              Скопировать
+            </button>
+            <button type="button" id="btn-save" class="btn btn--secondary" disabled title="Сохранить файл .txt">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12v2h10v-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Сохранить .txt
+            </button>
+            <button type="button" id="btn-clear" class="btn btn--ghost" title="Очистить форму и результат">
+              Очистить форму
+            </button>
+          </div>
+        </div>
+
+        <div id="result-placeholder" class="result-placeholder">
+          <div class="result-placeholder__icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="22" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M18 22l6 5 6-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <p>Заполните поля слева и нажмите «Собрать описание» — здесь появится структурированный текст для публикации.</p>
+        </div>
+
+        <article id="result-output" class="result-output hidden" aria-live="polite"></article>
+
+        <p id="toast" class="toast hidden" role="status"></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Для специалистов помогающих профессий · Текст можно редактировать после генерации</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
